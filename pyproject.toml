@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "browserbridge-mcp"
+version = "1.0.0"
+description = "Headless Browser Session Bridge & Accessibility DOM Inspector for AI Agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Johann Schiffer"}
+]
+keywords = ["mcp", "model-context-protocol", "browser", "headless", "automation", "claude", "cursor", "playwright"]
+dependencies = [
+    "httpx>=0.25.0"
+]
+
+[project.scripts]
+browserbridge = "browserbridge.cli:main"
