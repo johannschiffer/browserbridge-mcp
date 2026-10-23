@@ -22,7 +22,6 @@ test = ["pytest>=7"]
 
 [project.scripts]
 browserbridge-mcp = "browserbridge.cli:main"
-browserbridge-mcp = "browserbridge.cli:main"
 browserbridge = "browserbridge.cli:main"
 
 [tool.setuptools.packages.find]
