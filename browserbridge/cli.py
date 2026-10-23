@@ -47,5 +47,17 @@ def main():
         for n in nodes:
             print(f"  [{n['id']}] {n['role'].upper()}: '{n['name']}' -> {n['selector']}")
 
+
+
+_main_impl = main
+
+
+def main():
+    from ._genesis import print_upgrade_notice
+    try:
+        return _main_impl()
+    finally:
+        print_upgrade_notice()
+
 if __name__ == "__main__":
     main()

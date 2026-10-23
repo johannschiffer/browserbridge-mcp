@@ -1,5 +1,9 @@
 # BrowserBridge MCP (Lite Edition)
 
+> **Free:** [Genesis Starter Kit](https://johanld.gumroad.com/l/khffw) (25 `.cursorrules`/`CLAUDE.md` rulesets + MCP configs). Try the [live config builder](https://johannschiffer.github.io).
+> **Full stack:** all six servers in [Genesis Enterprise Suite ($19)](https://johanld.gumroad.com/l/tzuvz).
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Protocol: MCP](https://img.shields.io/badge/MCP-2024--11--05-green.svg)](https://modelcontextprotocol.io/)
 [![Python: >=3.10](https://img.shields.io/badge/Python->=3.10-yellow.svg)](https://python.org/)
@@ -9,6 +13,31 @@
 It enables agents to navigate web applications, extract semantic clean text, and interact with web pages without drowning the LLM context window in massive HTML blobs.
 
 ---
+
+## Run without cloning
+
+```bash
+uvx --from git+https://github.com/johannschiffer/browserbridge-mcp browserbridge-mcp
+```
+
+Claude Desktop / Cursor config entry:
+
+```json
+{
+  "mcpServers": {
+    "browserbridge-mcp": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/johannschiffer/browserbridge-mcp",
+        "browserbridge-mcp"
+      ]
+    }
+  }
+}
+```
+
+[![CI](https://github.com/johannschiffer/browserbridge-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/johannschiffer/browserbridge-mcp/actions/workflows/ci.yml)
 
 ## 🎯 The Problem
 
@@ -88,10 +117,31 @@ The **BrowserBridge Pro Edition** adds:
 - 🐳 **Production Docker & Compose:** Containerized headless Chromium runtime ready for cloud execution.
 - 🧪 **100% Passing Pytest Suite.**
 
-👉 **[Get BrowserBridge Pro on Gumroad ($14.99 USD)](https://johanld.gumroad.com/l/cfqto)**
+👉 **[Get the Genesis Enterprise Suite ($19)](https://johanld.gumroad.com/l/tzuvz)**
 
 ---
 
 ## 📄 License
 
 MIT © 2026 [Johann Schiffer](https://github.com/johannschiffer)
+
+## Recommended Infrastructure
+
+Proxies that work well with BrowserBridge MCP. Some links are referral links.
+
+- [Webshare](https://www.webshare.io/)
+- [ScraperAPI](https://www.scraperapi.com/)
+- [Bright Data](https://brightdata.com/)
+
+## Genesis MCP Ecosystem
+
+| Module | What it does | Repo |
+|---|---|---|
+| **CrawlEngine MCP** | Anti-bot web scraping, clean Markdown, proxy rotation and TLS evasion | [GitHub](https://github.com/johannschiffer/crawlengine-mcp) |
+| **BrowserBridge MCP** (this repo) | Deterministic headless browser automation with cryptographic action receipts | [GitHub](https://github.com/johannschiffer/browserbridge-mcp) |
+| **PgSafe MCP** | Zero-trust PostgreSQL/SQLite guard, live PII masking, zero-downtime migration checks | [GitHub](https://github.com/johannschiffer/pgsafe-mcp) |
+| **OmniBridge MCP** | Multi-channel notification and webhook bus with a persistent SQLite WAL queue | [GitHub](https://github.com/johannschiffer/omnibridge-mcp) |
+| **SysFlow MCP** | Safe Linux administration plane: systemd, port audit, isolated execution | [GitHub](https://github.com/johannschiffer/sysflow-mcp) |
+| **FastMCP Forge** | Production MCP server scaffolder: stdio, SSE and auth middleware | [GitHub](https://github.com/johannschiffer/fastmcp-forge) |
+
+[Live config builder](https://johannschiffer.github.io) | [Starter Kit, free](https://johanld.gumroad.com/l/khffw) | [Enterprise Suite, $19](https://johanld.gumroad.com/l/tzuvz)
