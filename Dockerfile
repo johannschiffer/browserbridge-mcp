@@ -1,6 +1,6 @@
-FROM python:3.12-slim
+# Generated for Glama.ai and Smithery.ai MCP registry compliance
+FROM python:3.11-slim
 WORKDIR /app
-COPY . .
-RUN pip install --no-cache-dir . && useradd -m app
-USER app
+COPY . /app
+RUN pip install --no-cache-dir .
 ENTRYPOINT ["browserbridge-mcp"]

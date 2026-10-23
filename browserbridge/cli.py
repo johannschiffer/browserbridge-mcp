@@ -10,9 +10,11 @@ from .engine import BrowserEngine
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="browserbridge",
+        prog="browserbridge-mcp",
         description="BrowserBridge: Headless Browser Session Bridge & AOM Inspector for AI Agents"
     )
+    parser.add_argument("-v", "--version", action="version", version="%(prog)s 1.0.0")
+
     subparsers = parser.add_subparsers(dest="command", help="Command to run")
 
     # Run stdio
