@@ -5,13 +5,18 @@
 </a>
 
 
-> **Free:** [Genesis Starter Kit](https://johanld.gumroad.com/l/genesis-starter-kit) (25 `.cursorrules`/`CLAUDE.md` rulesets + MCP configs). Try the [live config builder](https://johannschiffer.github.io).
-> **Full stack:** all six servers in [Genesis Enterprise Suite ($19)](https://johanld.gumroad.com/l/genesis-enterprise-suite).
-
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Protocol: MCP](https://img.shields.io/badge/MCP-2024--11--05-green.svg)](https://modelcontextprotocol.io/)
 [![Python: >=3.10](https://img.shields.io/badge/Python->=3.10-yellow.svg)](https://python.org/)
+
+
+> ### ⚡ Enterprise Infrastructure & Tooling
+> | Package | Access | Features |
+> |---|---|---|
+> | **Starter Kit** | **Free ($0+)** | 25+ `.cursorrules`, `CLAUDE.md` stack rules & MCP config templates. [Download Free](https://johanld.gumroad.com/l/genesis-starter-kit) |
+> | **Enterprise Suite Pro** | **$19 USD** | 6 Pro MCP Servers, Zero-Downtime DB migrations, Residential Proxies, Docker Compose Stack & Commercial License. [Get Pro License](https://johanld.gumroad.com/l/genesis-enterprise-suite) |
+> | **Config Generator** | **Free Web Tool** | Interactive visual config generator for Claude Desktop & Cursor. [Open Generator](https://johannschiffer.github.io/) |
 
 **BrowserBridge MCP** is a lightweight headless browser session bridge and Accessibility Object Model (AOM) inspector designed for AI coding assistants (Claude Desktop, Cursor, OpenAI Codex, LangGraph).
 
