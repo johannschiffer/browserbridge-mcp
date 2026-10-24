@@ -6,6 +6,7 @@
 
 
 
+[![PyPI](https://img.shields.io/pypi/v/browserbridge-mcp.svg)](https://pypi.org/project/browserbridge-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Protocol: MCP](https://img.shields.io/badge/MCP-2024--11--05-green.svg)](https://modelcontextprotocol.io/)
 [![Python: >=3.10](https://img.shields.io/badge/Python->=3.10-yellow.svg)](https://python.org/)
@@ -38,8 +39,6 @@ Claude Desktop / Cursor config entry:
     "browserbridge-mcp": {
       "command": "uvx",
       "args": [
-        "--from",
-        "git+https://github.com/johannschiffer/browserbridge-mcp",
         "browserbridge-mcp"
       ]
     }
