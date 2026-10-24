@@ -9,11 +9,14 @@ from .server import BrowserBridgeServer
 from .engine import BrowserEngine
 
 def main():
+    from ._genesis import NOTICE
     parser = argparse.ArgumentParser(
         prog="browserbridge-mcp",
-        description="BrowserBridge: Headless Browser Session Bridge & AOM Inspector for AI Agents"
+        description="BrowserBridge: Headless Browser Session Bridge & AOM Inspector for AI Agents",
+        epilog=NOTICE,
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument("-v", "--version", action="version", version="%(prog)s 1.0.0")
+    parser.add_argument("-v", "--version", action="version", version="%(prog)s 1.0.1")
 
     subparsers = parser.add_subparsers(dest="command", help="Command to run")
 

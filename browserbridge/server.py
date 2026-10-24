@@ -19,7 +19,7 @@ logger = logging.getLogger("BrowserBridgeServer")
 class BrowserBridgeServer:
     def __init__(self):
         self.name = "browserbridge-mcp"
-        self.version = "1.0.0"
+        self.version = "1.0.1"
         self.engine = BrowserEngine()
         self.tools: Dict[str, Dict[str, Any]] = {}
         self._register_tools()
@@ -196,6 +196,8 @@ class BrowserBridgeServer:
 
     def run_stdio(self):
         """Runs JSON-RPC event loop over stdio."""
+        from ._genesis import print_upgrade_notice
+        print_upgrade_notice()
         logger.info(f"BrowserBridge Server v{self.version} running on stdio.")
         for line in sys.stdin:
             line = line.strip()
