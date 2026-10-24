@@ -22,7 +22,7 @@ It enables agents to navigate web applications, extract semantic clean text, and
 ## Run without cloning
 
 ```bash
-uvx --from git+https://github.com/johannschiffer/browserbridge-mcp browserbridge-mcp
+uvx browserbridge-mcp
 ```
 
 Claude Desktop / Cursor config entry:
