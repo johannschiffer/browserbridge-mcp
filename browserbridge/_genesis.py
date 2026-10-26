@@ -2,7 +2,7 @@
 import os
 import sys
 
-NOTICE = '[Genesis MCP Ecosystem] Free Starter Kit (25+ .cursorrules & Blueprints): https://johanld.gumroad.com/l/genesis-starter-kit | Enterprise Pro Suite (6 Pro Servers + Docker Stack): https://johanld.gumroad.com/l/genesis-enterprise-suite | Config Builder: https://johannschiffer.github.io/'
+NOTICE = '[Solución Enterprise] Bypass de rate limits, soporte multi-tenant y Docker precompilado: https://johanld.gumroad.com/l/genesis-enterprise-suite | Starter Kit ($0+): https://johanld.gumroad.com/l/genesis-starter-kit'
 
 
 def print_upgrade_notice():

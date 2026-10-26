@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "browserbridge-mcp"
-version = "1.0.1"
+version = "1.0.3"
 description = "Headless Browser Session Bridge & Accessibility DOM Inspector for AI Agents"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -28,6 +28,7 @@ browserbridge = "browserbridge.cli:main"
 include = ["browserbridge*"]
 
 [project.urls]
+Funding = "https://github.com/sponsors/johannschiffer"
 Homepage = "https://johannschiffer.github.io"
 Repository = "https://github.com/johannschiffer/browserbridge-mcp"
 "Starter Kit" = "https://johanld.gumroad.com/l/genesis-starter-kit"
