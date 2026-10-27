@@ -1,16 +1,17 @@
 """
-BrowserBridge Core Engine (Lite Edition)
-Lightweight headless browser session driver and Accessibility Object Model (AOM) extractor.
+BrowserBridge Pro Engine
+Headless browser session manager with DOM state hashing for durable receipts.
 """
 
 import re
 import html
+import hashlib
 import logging
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timezone
 import httpx
 
-logger = logging.getLogger("BrowserBridgeEngine")
+logger = logging.getLogger("BrowserBridgeProEngine")
 
 class BrowserSession:
     def __init__(self, session_id: str = "default"):
@@ -23,19 +24,21 @@ class BrowserSession:
         self.created_at: str = datetime.now(timezone.utc).isoformat()
         self.last_active: str = datetime.now(timezone.utc).isoformat()
 
+    def get_dom_hash(self) -> str:
+        """Computes SHA-256 hash of the current DOM state."""
+        return hashlib.sha256(self.html.encode("utf-8")).hexdigest()
+
     def navigate(self, url: str) -> Dict[str, Any]:
-        """Navigates to URL and loads HTML content."""
         self.last_active = datetime.now(timezone.utc).isoformat()
         if not (url.startswith("http://") or url.startswith("https://")):
             url = f"https://{url}"
 
         try:
             with httpx.Client(timeout=15.0, follow_redirects=True) as client:
-                resp = client.get(url, headers={"User-Agent": "BrowserBridge-MCP/1.0.0 (Headless Agent)"})
+                resp = client.get(url, headers={"User-Agent": "BrowserBridge-MCP-Pro/1.0.0 (Headless Agent)"})
                 self.current_url = str(resp.url)
                 self.status_code = resp.status_code
                 self.html = resp.text
-                # Extract title
                 m_title = re.search(r"<title>(.*?)</title>", self.html, re.IGNORECASE | re.DOTALL)
                 self.title = m_title.group(1).strip() if m_title else "Untitled Page"
         except Exception as e:
@@ -48,30 +51,20 @@ class BrowserSession:
         return self.get_status()
 
     def extract_clean_text(self) -> str:
-        """Strips scripts, styles, and markup, returning readable semantic text."""
         self.last_active = datetime.now(timezone.utc).isoformat()
-        # Remove script and style blocks
         text = re.sub(r"<(script|style|svg|noscript)[^>]*>.*?</\1>", "", self.html, flags=re.IGNORECASE | re.DOTALL)
-        # Convert paragraph/breaks to newlines
         text = re.sub(r"<(br|p|div|h\d)[^>]*>", "\n", text, flags=re.IGNORECASE)
-        # Remove remaining tags
         text = re.sub(r"<[^>]+>", " ", text)
-        # Decode entities
         text = html.unescape(text)
         # Compress whitespace
         lines = [re.sub(r"[ \t]+", " ", line).strip() for line in text.splitlines() if line.strip()]
         return "\n".join(lines)
 
     def extract_accessibility_tree(self) -> List[Dict[str, Any]]:
-        """
-        Parses interactive HTML elements into a compact Accessibility Object Model (AOM).
-        Reduces token consumption by ~95% compared to raw HTML.
-        """
         self.last_active = datetime.now(timezone.utc).isoformat()
         aom_nodes = []
         node_counter = 1
 
-        # Interactive patterns
         # 1. Buttons
         for m in re.finditer(r"<button([^>]*)>(.*?)</button>", self.html, re.IGNORECASE | re.DOTALL):
             attrs, content = m.groups()
@@ -117,8 +110,9 @@ class BrowserSession:
         return aom_nodes[:50]
 
     def click(self, selector: str) -> Dict[str, Any]:
-        """Simulates clicking an element."""
         self.last_active = datetime.now(timezone.utc).isoformat()
+        # Simulated state change on click
+        self.html += f"<!-- Action: Clicked {selector} -->"
         return {
             "status": "clicked",
             "selector": selector,
@@ -127,11 +121,10 @@ class BrowserSession:
         }
 
     def fill(self, selector: str, value: str) -> Dict[str, Any]:
-        """Fills a form input field."""
         self.last_active = datetime.now(timezone.utc).isoformat()
-        # Track input value
         key = selector.replace("input[name='", "").replace("']", "")
         self.form_state[key] = value
+        self.html += f"<!-- Action: Filled {selector} with '{value}' -->"
         return {
             "status": "filled",
             "selector": selector,
@@ -141,16 +134,20 @@ class BrowserSession:
         }
 
     def get_status(self) -> Dict[str, Any]:
-        """Returns session status metadata."""
         return {
             "session_id": self.session_id,
             "url": self.current_url,
             "title": self.title,
             "status_code": self.status_code,
+            "dom_hash": self.get_dom_hash()[:16],
             "html_length_bytes": len(self.html),
             "form_fields_filled": len(self.form_state),
             "last_active": self.last_active
         }
+
+# Backward compatibility alias
+BrowserEngine = BrowserSession
+
 
 class BrowserEngine:
     def __init__(self):

@@ -1,8 +1,8 @@
-"""Upgrade notice. Printed to stderr so MCP stdio traffic on stdout is never affected."""
+"""Open source support notice. Printed to stderr so MCP stdio traffic on stdout is never affected."""
 import os
 import sys
 
-NOTICE = '[Solución Enterprise] Bypass de rate limits, soporte multi-tenant y Docker precompilado: https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS | Starter Kit ($0+): https://johanld.gumroad.com/l/genesis-starter-kit'
+NOTICE = '100% Free & Open Source (MIT). Support development on Ko-fi: https://ko-fi.com/johannschiffer'
 
 
 def print_upgrade_notice():

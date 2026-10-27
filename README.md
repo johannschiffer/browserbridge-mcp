@@ -1,23 +1,24 @@
-# BrowserBridge MCP (Lite Edition)
+# browserbridge-mcp (v2.0.0)
+
+[![PyPI version](https://img.shields.io/badge/PyPI-v2.0.0-blue.svg)](https://pypi.org/project/browserbridge-mcp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Support on Ko-fi](https://img.shields.io/badge/Support%20on-Ko--fi-ff5e5b.svg)](https://ko-fi.com/johannschiffer)
+
+> **100% Free & Open Source (MIT)**: All features, proxy rotation, migration simulation, Docker stacks, and recipes are completely unlocked. Support open development on [Ko-fi](https://ko-fi.com/johannschiffer).
 
 <a href="https://glama.ai/mcp/servers/@johannschiffer/browserbridge-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@johannschiffer/browserbridge-mcp/badge" alt="browserbridge-mcp MCP server" />
 </a>
 
-
-
-[![Early Access $9](https://img.shields.io/badge/Early%20Access-%249%20Promo-orange.svg)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)
 [![PyPI](https://img.shields.io/pypi/v/browserbridge-mcp.svg)](https://pypi.org/project/browserbridge-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Protocol: MCP](https://img.shields.io/badge/MCP-2024--11--05-green.svg)](https://modelcontextprotocol.io/)
 [![Python: >=3.10](https://img.shields.io/badge/Python->=3.10-yellow.svg)](https://python.org/)
 
-
 > ### ⚡ Enterprise Infrastructure & Tooling
 > | Package | Access | Features |
 > |---|---|---|
-> | **Starter Kit** | **Free ($0+)** | 25+ `.cursorrules`, `CLAUDE.md` stack rules & MCP config templates. [Download Free](https://johanld.gumroad.com/l/genesis-starter-kit) |
-> | **Enterprise Suite Pro** | **$9 Early Access** ~~$19~~ | 6 Pro MCP Servers, Zero-Downtime DB migrations, Residential Proxies, Docker Compose Stack & Commercial License. [Get Early Access ($9)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS) |
+> | **Starter Kit** | **Free ($0+)** | 25+ `.cursorrules`, `CLAUDE.md` stack rules & MCP config templates. [Download Free](https://github.com/johannschiffer) |
 > | **Config Generator** | **Free Web Tool** | Interactive visual config generator for Claude Desktop & Cursor. [Open Generator](https://johannschiffer.github.io/) |
 
 **BrowserBridge MCP** is a lightweight headless browser session bridge and Accessibility Object Model (AOM) inspector designed for AI coding assistants (Claude Desktop, Cursor, OpenAI Codex, LangGraph).
@@ -53,14 +54,11 @@ Claude Desktop / Cursor config entry:
 
 When autonomous AI agents interact with web pages:
 1. **Context Window Exhaustion:** Dumping 2MB of raw HTML, scripts, CSS, and SVG icons into an LLM exhausts the token budget within 3 turns.
-2. **Brittle Selectors:** Agents fail to find buttons when modern websites use dynamic, hashed class names (`class="btn_3x9a_primary"`).
 3. **Zombie Memory Leaks:** Unmanaged headless browsers leak memory on the host system when agents drop sessions without cleanup.
-
-**BrowserBridge** solves this by converting web pages into a compact, token-efficient Accessibility Object Model (AOM) tree (~95% token reduction) and providing clean interaction primitives.
 
 ---
 
-## ✨ Features (Lite Edition)
+## ✨ Features (Open Source v2.0)
 
 - 🌐 **Headless Navigation:** Fetch and navigate web pages with automatic redirect handling.
 - 🌳 **Accessibility Tree (AOM) Extraction:** Filters noisy DOMs into structured interactive nodes (buttons, links, textboxes) with stable `@node` identifiers.
@@ -127,10 +125,7 @@ The **BrowserBridge Pro Edition** adds:
 - 🐳 **Production Docker & Compose:** Containerized headless Chromium runtime ready for cloud execution.
 - 🧪 **100% Passing Pytest Suite.**
 
-👉 **[Get the Genesis Enterprise Suite ($9 Early Access)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)**
-
 ---
-
 
 ## Solución Enterprise (Genesis Suite)
 
@@ -140,9 +135,7 @@ Para despliegues en producción y cargas intensivas con bypass de rate limits, s
 - **Soporte Multi-Tenant & RBAC:** Control de accesos granular, gestión de secretos y auditoría criptográfica.
 - **Docker Compose Stacks:** Contenedores precompilados y configuraciones listas para producción con orquestación autónoma.
 
-👉 **[Genesis Enterprise Suite ($9 Early Access)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)**  
-📦 **[Genesis AI Engineering Starter Kit ($0+)](https://johanld.gumroad.com/l/genesis-starter-kit)**
-
+  
 
 ## 📄 License
 
@@ -167,7 +160,7 @@ Proxies that work well with BrowserBridge MCP. Some links are referral links.
 | **SysFlow MCP** | Safe Linux administration plane: systemd, port audit, isolated execution | [GitHub](https://github.com/johannschiffer/sysflow-mcp) |
 | **FastMCP Forge** | Production MCP server scaffolder: stdio, SSE and auth middleware | [GitHub](https://github.com/johannschiffer/fastmcp-forge) |
 
-[Live config builder](https://johannschiffer.github.io) | [Starter Kit, free](https://johanld.gumroad.com/l/genesis-starter-kit) | [Enterprise Suite, $9 Early Access](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)
+[Live config builder](https://johannschiffer.github.io) | [GitHub Profile](https://github.com/johannschiffer) | [Support on Ko-fi ☕](https://ko-fi.com/johannschiffer)
 
 ## Recommended Infrastructure & Sponsorship
 

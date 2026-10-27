@@ -1,0 +1,70 @@
+# Genesis stack: all six Pro servers.
+# The MCP servers speak stdio, so clients normally launch them directly (see mcp-configs/).
+# This file builds and smoke-tests every image, keeps them running for attach/exec use, and exposes the SSE example.
+#   docker compose -f docker-compose.genesis-stack.yml up -d --build
+#   docker compose -f docker-compose.genesis-stack.yml ps
+x-common: &common
+  restart: unless-stopped
+  stdin_open: true
+  tty: true
+  security_opt: ["no-new-privileges:true"]
+  logging:
+    driver: json-file
+    options: {max-size: "10m", max-file: "3"}
+
+services:
+  crawlengine:
+    <<: *common
+    build: ./servers/crawlengine-mcp-pro
+    container_name: genesis-crawlengine
+    environment:
+      CRAWLENGINE_EDITION: pro
+      CRAWLENGINE_PROXIES: ${CRAWLENGINE_PROXIES:-}
+  pgsafe:
+    <<: *common
+    build: ./servers/pgsafe-mcp-pro
+    container_name: genesis-pgsafe
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-sqlite:///data/genesis.db}
+      PGSAFE_EDITION: pro
+    volumes: [pgsafe_data:/app/data]
+  omnibridge:
+    <<: *common
+    build: ./servers/omnibridge-mcp-pro
+    container_name: genesis-omnibridge
+    environment:
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL:-}
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL:-}
+      WHATSAPP_PHONE_NUMBER_ID: ${WHATSAPP_PHONE_NUMBER_ID:-}
+      WHATSAPP_ACCESS_TOKEN: ${WHATSAPP_ACCESS_TOKEN:-}
+      MATRIX_HOMESERVER_URL: ${MATRIX_HOMESERVER_URL:-https://matrix.org}
+      MATRIX_ACCESS_TOKEN: ${MATRIX_ACCESS_TOKEN:-}
+      MATRIX_ROOM_ID: ${MATRIX_ROOM_ID:-}
+      WEBHOOK_SECRET_KEY: ${WEBHOOK_SECRET_KEY:-}
+    volumes: [omnibridge_data:/root/.omnibridge]
+  browserbridge:
+    <<: *common
+    build: ./servers/browserbridge-mcp-pro
+    container_name: genesis-browserbridge
+    environment: {PYTHONUNBUFFERED: "1"}
+    volumes: [browserbridge_data:/data]
+  sysflow:
+    <<: *common
+    build: ./servers/sysflow-mcp-pro
+    container_name: genesis-sysflow
+    pid: host
+    volumes: ["/var/log:/var/log:ro", "/proc:/host-proc:ro"]
+  fastmcp-forge:
+    <<: *common
+    build: ./servers/fastmcp-forge-pro
+    container_name: genesis-fastmcp-forge
+    ports: ["127.0.0.1:8000:8000"]
+    environment:
+      FASTMCP_AUTH_KEY: ${FASTMCP_AUTH_KEY:?set FASTMCP_AUTH_KEY in .env}
+      FASTMCP_BURST_LIMIT: ${FASTMCP_BURST_LIMIT:-50}
+
+volumes:
+  pgsafe_data:
+  omnibridge_data:
+  browserbridge_data:

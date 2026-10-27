@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "browserbridge-mcp": {
+      "command": "uvx",
+      "args": ["browserbridge-mcp"]
+    }
+  }
+}

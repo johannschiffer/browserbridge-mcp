@@ -1,68 +1,55 @@
+from ._genesis import NOTICE
 """
-BrowserBridge CLI Entrypoint (Lite Edition)
+BrowserBridge Pro CLI Entrypoint
 """
 
 import sys
 import argparse
 import json
-from .server import BrowserBridgeServer
-from .engine import BrowserEngine
+from .server import BrowserBridgeProServer
+from .core.receipts_engine import DurableReceiptsEngine
 
 def main():
-    from ._genesis import NOTICE
     parser = argparse.ArgumentParser(
-        prog="browserbridge-mcp",
-        description="BrowserBridge: Headless Browser Session Bridge & AOM Inspector for AI Agents",
-        epilog=NOTICE,
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        prog="browserbridge-pro",
+        description="BrowserBridge Pro: Headless Browser Session Bridge & Durable Action Receipts"
     )
-    parser.add_argument("-v", "--version", action="version", version="%(prog)s 1.0.1")
-
     subparsers = parser.add_subparsers(dest="command", help="Command to run")
 
     # Run stdio
-    run_parser = subparsers.add_parser("run", help="Start the BrowserBridge MCP stdio server")
+    run_parser = subparsers.add_parser("run", help="Start the BrowserBridge Pro MCP server over stdio")
+    run_parser.add_argument("--db", type=str, default=None, help="Path to receipts database")
 
-    # Navigate
-    nav_parser = subparsers.add_parser("navigate", help="Fetch a webpage and inspect status")
-    nav_parser.add_argument("url", type=str, help="Destination URL")
+    # Verify receipts
+    verify_parser = subparsers.add_parser("verify-trail", help="Verify cryptographic continuity of actions")
+    verify_parser.add_argument("--session", type=str, default="default", help="Session ID")
+    verify_parser.add_argument("--db", type=str, default=None, help="Path to receipts database")
 
-    # Inspect AOM
-    aom_parser = subparsers.add_parser("aom", help="Extract Accessibility Object Model (AOM) nodes from URL")
-    aom_parser.add_argument("url", type=str, help="Destination URL")
+    # List receipts
+    list_parser = subparsers.add_parser("receipts", help="List action receipts for a session")
+    list_parser.add_argument("--session", type=str, default="default", help="Session ID")
+    list_parser.add_argument("--db", type=str, default=None, help="Path to receipts database")
 
     args = parser.parse_args()
 
     if args.command == "run" or args.command is None:
-        server = BrowserBridgeServer()
+        db_path = getattr(args, "db", None)
+        server = BrowserBridgeProServer(db_path=db_path)
         server.run_stdio()
-    elif args.command == "navigate":
-        engine = BrowserEngine()
-        status = engine.navigate(args.url)
-        print("=== BROWSER SESSION STATUS ===")
-        print(f"URL:    {status['url']}")
-        print(f"Title:  {status['title']}")
-        print(f"Status: {status['status_code']}")
-        print(f"Size:   {status['html_length_bytes']} bytes")
-    elif args.command == "aom":
-        engine = BrowserEngine()
-        engine.navigate(args.url)
-        nodes = engine.extract_accessibility_tree()
-        print(f"=== ACCESSIBILITY OBJECT MODEL ({len(nodes)} interactive nodes) ===")
-        for n in nodes:
-            print(f"  [{n['id']}] {n['role'].upper()}: '{n['name']}' -> {n['selector']}")
-
-
-
-_main_impl = main
-
-
-def main():
-    from ._genesis import print_upgrade_notice
-    try:
-        return _main_impl()
-    finally:
-        print_upgrade_notice()
+    elif args.command == "verify-trail":
+        receipts = DurableReceiptsEngine(db_path=args.db)
+        res = receipts.verify_action_trail(args.session)
+        print("=== ACTION TRAIL VERIFICATION ===")
+        print(f"Session:     {res['session_id']}")
+        print(f"Valid Chain: {res['valid']}")
+        print(f"Status:      {res['status']}")
+        print(f"Total Acts:  {res['total_actions']}")
+    elif args.command == "receipts":
+        receipts = DurableReceiptsEngine(db_path=args.db)
+        items = receipts.list_receipts(args.session)
+        print(f"Found {len(items)} action receipts for session '{args.session}':")
+        for r in items:
+            print(f"  [{r['status'].upper()}] {r['action_type']} -> {r['target']} (pre: {r['pre_state_hash'][:8]}... post: {r['post_state_hash'][:8]}...) at {r['created_at']}")
 
 if __name__ == "__main__":
     main()

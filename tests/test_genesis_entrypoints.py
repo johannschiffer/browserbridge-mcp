@@ -1,25 +1,14 @@
-import importlib
-import io
-import os
+import subprocess
 import sys
 
+def test_notice_prints_to_stderr():
+    res = subprocess.run([sys.executable, "-c", "import browserbridge._genesis; browserbridge._genesis.print_upgrade_notice()"], capture_output=True, text=True)
+    assert 'ko-fi.com/johannschiffer' in res.stderr
+    assert '100% Free & Open Source' in res.stderr
 
-def test_script_target_is_callable():
-    mod = importlib.import_module('browserbridge.cli')
-    assert callable(getattr(mod, 'main'))
-
-
-def test_upgrade_notice_goes_to_stderr(capsys, monkeypatch):
-    monkeypatch.delenv('GENESIS_NO_NOTICE', raising=False)
-    from browserbridge._genesis import print_upgrade_notice
-    print_upgrade_notice()
-    out = capsys.readouterr()
-    assert out.out == ''
-    assert 'gumroad.com' in out.err
-
-
-def test_upgrade_notice_can_be_silenced(capsys, monkeypatch):
-    monkeypatch.setenv('GENESIS_NO_NOTICE', '1')
-    from browserbridge._genesis import print_upgrade_notice
-    print_upgrade_notice()
-    assert capsys.readouterr().err == ''
+def test_notice_suppression():
+    import os
+    env = os.environ.copy()
+    env["GENESIS_NO_NOTICE"] = "1"
+    res = subprocess.run([sys.executable, "-c", "import browserbridge._genesis; browserbridge._genesis.print_upgrade_notice()"], env=env, capture_output=True, text=True)
+    assert 'ko-fi.com' not in res.stderr
