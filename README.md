@@ -127,7 +127,7 @@ The **BrowserBridge Pro Edition** adds:
 - 🐳 **Production Docker & Compose:** Containerized headless Chromium runtime ready for cloud execution.
 - 🧪 **100% Passing Pytest Suite.**
 
-👉 **[Get the Genesis Enterprise Suite ($19)](https://johanld.gumroad.com/l/genesis-enterprise-suite)**
+👉 **[Get the Genesis Enterprise Suite ($9 Early Access)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)**
 
 ---
 
@@ -140,7 +140,7 @@ Para despliegues en producción y cargas intensivas con bypass de rate limits, s
 - **Soporte Multi-Tenant & RBAC:** Control de accesos granular, gestión de secretos y auditoría criptográfica.
 - **Docker Compose Stacks:** Contenedores precompilados y configuraciones listas para producción con orquestación autónoma.
 
-👉 **[Genesis Enterprise Suite ($19 USD)](https://johanld.gumroad.com/l/genesis-enterprise-suite)**  
+👉 **[Genesis Enterprise Suite ($9 Early Access)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)**  
 📦 **[Genesis AI Engineering Starter Kit ($0+)](https://johanld.gumroad.com/l/genesis-starter-kit)**
 
 
@@ -167,7 +167,7 @@ Proxies that work well with BrowserBridge MCP. Some links are referral links.
 | **SysFlow MCP** | Safe Linux administration plane: systemd, port audit, isolated execution | [GitHub](https://github.com/johannschiffer/sysflow-mcp) |
 | **FastMCP Forge** | Production MCP server scaffolder: stdio, SSE and auth middleware | [GitHub](https://github.com/johannschiffer/fastmcp-forge) |
 
-[Live config builder](https://johannschiffer.github.io) | [Starter Kit, free](https://johanld.gumroad.com/l/genesis-starter-kit) | [Enterprise Suite, $19](https://johanld.gumroad.com/l/genesis-enterprise-suite)
+[Live config builder](https://johannschiffer.github.io) | [Starter Kit, free](https://johanld.gumroad.com/l/genesis-starter-kit) | [Enterprise Suite, $9 Early Access](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)
 
 ## Recommended Infrastructure & Sponsorship
 

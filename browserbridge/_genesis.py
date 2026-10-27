@@ -2,7 +2,7 @@
 import os
 import sys
 
-NOTICE = '[Solución Enterprise] Bypass de rate limits, soporte multi-tenant y Docker precompilado: https://johanld.gumroad.com/l/genesis-enterprise-suite | Starter Kit ($0+): https://johanld.gumroad.com/l/genesis-starter-kit'
+NOTICE = '[Solución Enterprise] Bypass de rate limits, soporte multi-tenant y Docker precompilado: https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS | Starter Kit ($0+): https://johanld.gumroad.com/l/genesis-starter-kit'
 
 
 def print_upgrade_notice():
