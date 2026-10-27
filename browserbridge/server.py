@@ -1,5 +1,5 @@
 """
-BrowserBridge Pro MCP Server
+BrowserBridge MCP Server
 Exposes headless browser orchestration, durable action receipts,
 session pool management, and accessibility tree inspection over stdio.
 """
@@ -15,12 +15,12 @@ from .core.selector_resolver import SelectorResolver
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] [BrowserBridge-Pro] %(message)s",
+    format="%(asctime)s [%(levelname)s] [BrowserBridge] %(message)s",
     stream=sys.stderr
 )
-logger = logging.getLogger("BrowserBridgeProServer")
+logger = logging.getLogger("BrowserBridgeServer")
 
-class BrowserBridgeProServer:
+class BrowserBridgeServer:
     def __init__(self, db_path: Optional[str] = None, idle_ttl_seconds: int = 180):
         self.name = "browserbridge-mcp"
         self.version = "1.0.0"
@@ -224,7 +224,7 @@ class BrowserBridgeProServer:
 
         if req_id is None:
             if method == "notifications/initialized":
-                logger.info("BrowserBridge Pro client initialized.")
+                logger.info("BrowserBridge client initialized.")
             return None
 
         if method == "initialize":
@@ -290,7 +290,7 @@ class BrowserBridgeProServer:
 
     def run_stdio(self):
         """Standard IO event loop for JSON-RPC messages."""
-        logger.info(f"BrowserBridge Pro Server v{self.version} started on stdio.")
+        logger.info(f"BrowserBridge Server v{self.version} started on stdio.")
         for line in sys.stdin:
             line = line.strip()
             if not line:
@@ -311,4 +311,4 @@ class BrowserBridgeProServer:
                 sys.stdout.flush()
 
 # Backward compatibility alias
-BrowserBridgeServer = BrowserBridgeProServer
+

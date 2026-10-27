@@ -2,13 +2,13 @@ import pytest
 import tempfile
 import os
 import json
-from browserbridge.server import BrowserBridgeProServer
+from browserbridge.server import BrowserBridgeServer
 
 @pytest.fixture
 def temp_server():
     fd, path = tempfile.mkstemp(suffix=".db")
     os.close(fd)
-    server = BrowserBridgeProServer(db_path=path, idle_ttl_seconds=60)
+    server = BrowserBridgeServer(db_path=path, idle_ttl_seconds=60)
     yield server
     if os.path.exists(path):
         os.remove(path)

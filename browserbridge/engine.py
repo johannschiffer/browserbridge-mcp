@@ -1,5 +1,5 @@
 """
-BrowserBridge Pro Engine
+BrowserBridge Engine
 Headless browser session manager with DOM state hashing for durable receipts.
 """
 
@@ -35,7 +35,7 @@ class BrowserSession:
 
         try:
             with httpx.Client(timeout=15.0, follow_redirects=True) as client:
-                resp = client.get(url, headers={"User-Agent": "BrowserBridge-MCP-Pro/1.0.0 (Headless Agent)"})
+                resp = client.get(url, headers={"User-Agent": "BrowserBridge-MCP/1.0.0 (Headless Agent)"})
                 self.current_url = str(resp.url)
                 self.status_code = resp.status_code
                 self.html = resp.text

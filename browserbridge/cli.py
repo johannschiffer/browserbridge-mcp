@@ -1,22 +1,22 @@
 """
-BrowserBridge Pro CLI Entrypoint
+BrowserBridge CLI Entrypoint
 """
 
 import sys
 import argparse
 import json
-from .server import BrowserBridgeProServer
+from .server import BrowserBridgeServer
 from .core.receipts_engine import DurableReceiptsEngine
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="browserbridge-pro",
-        description="BrowserBridge Pro: Headless Browser Session Bridge & Durable Action Receipts"
+        prog="browserbridge",
+        description="BrowserBridge: Headless Browser Session Bridge & Durable Action Receipts"
     )
     subparsers = parser.add_subparsers(dest="command", help="Command to run")
 
     # Run stdio
-    run_parser = subparsers.add_parser("run", help="Start the BrowserBridge Pro MCP server over stdio")
+    run_parser = subparsers.add_parser("run", help="Start the BrowserBridge MCP server over stdio")
     run_parser.add_argument("--db", type=str, default=None, help="Path to receipts database")
 
     # Verify receipts
@@ -33,7 +33,7 @@ def main():
 
     if args.command == "run" or args.command is None:
         db_path = getattr(args, "db", None)
-        server = BrowserBridgeProServer(db_path=db_path)
+        server = BrowserBridgeServer(db_path=db_path)
         server.run_stdio()
     elif args.command == "verify-trail":
         receipts = DurableReceiptsEngine(db_path=args.db)

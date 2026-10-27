@@ -7,4 +7,4 @@ This folder contains verified production recipes and client configurations for i
 2. `advanced_agent_workflow.py`: End-to-end Python script demonstrating advanced tool calling and resilience patterns.
 3. `docker-compose.genesis-stack.yml`: Multi-container Docker deployment recipe in the repository root.
 
-100% Free & Open Source under MIT. Support ongoing development on [Ko-fi](https://ko-fi.com/johannschiffer).
+Released under the MIT License.

@@ -1,16 +1,8 @@
-# browserbridge-mcp (v2.0.0)
+# browserbridge-mcp (v1.0.0)
 
-[![PyPI version](https://img.shields.io/badge/PyPI-v2.0.0-blue.svg)](https://pypi.org/project/browserbridge-mcp/)
+[![PyPI version](https://img.shields.io/badge/PyPI-v1.0.0-blue.svg)](https://pypi.org/project/browserbridge-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Support on Ko-fi](https://img.shields.io/badge/Support%20on-Ko--fi-ff5e5b.svg)](https://ko-fi.com/johannschiffer)
-
-> **100% Free & Open Source (MIT)**: All features, proxy rotation, migration simulation, Docker stacks, and recipes are completely unlocked. Support open development on [Ko-fi](https://ko-fi.com/johannschiffer).
-
-> ### ⚡ Open Source Ecosystem & Community Tools
-> | Resource | Access | Description |
-> |---|---|---|
-> | **Ruleset Bundle** | **100% Free** | 55+ production rulesets & MCP config templates. [Download Free](https://johannschiffer.github.io/) |
-> | **Support & Donate** | **Ko-fi** | Support open-source maintenance. [Support on Ko-fi](https://ko-fi.com/johannschiffer) |
 
 <a href="https://glama.ai/mcp/servers/@johannschiffer/browserbridge-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@johannschiffer/browserbridge-mcp/badge" alt="browserbridge-mcp MCP server" />
@@ -20,7 +12,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Protocol: MCP](https://img.shields.io/badge/MCP-2024--11--05-green.svg)](https://modelcontextprotocol.io/)
 [![Python: >=3.10](https://img.shields.io/badge/Python->=3.10-yellow.svg)](https://python.org/)
-
 
 **BrowserBridge MCP** is a lightweight headless browser session bridge and Accessibility Object Model (AOM) inspector designed for AI coding assistants (Claude Desktop, Cursor, OpenAI Codex, LangGraph).
 
@@ -59,7 +50,7 @@ When autonomous AI agents interact with web pages:
 
 ---
 
-## ✨ Features (Open Source v2.0)
+## Features
 
 - 🌐 **Headless Navigation**: Fetch and navigate web pages with automatic redirect handling.
 - 🌳 **Accessibility Tree (AOM) Extraction**: Filters noisy DOMs into structured interactive nodes (buttons, links, textboxes) with stable `@node` identifiers.
@@ -118,43 +109,21 @@ browserbridge aom https://news.ycombinator.com
 
 ---
 
-## 📄 License
-
-MIT © 2026 [Johann Schiffer](https://github.com/johannschiffer)
-
-## Recommended Infrastructure
-
-Proxies that work well with BrowserBridge MCP. Some links are referral links.
-
-- [Webshare](https://www.webshare.io/)
-- [ScraperAPI](https://www.scraperapi.com/)
-- [Bright Data](https://brightdata.com/)
-
 ## Genesis MCP Ecosystem
 
-| Module | What it does | Repo |
+| Module | Description | Repository |
 |---|---|---|
-| **CrawlEngine MCP** | Anti-bot web scraping, clean Markdown, proxy rotation and TLS evasion | [GitHub](https://github.com/johannschiffer/crawlengine-mcp) |
-| **BrowserBridge MCP** (this repo) | Deterministic headless browser automation with cryptographic action receipts | [GitHub](https://github.com/johannschiffer/browserbridge-mcp) |
-| **PgSafe MCP** | Zero-trust PostgreSQL/SQLite guard, live PII masking, zero-downtime migration checks | [GitHub](https://github.com/johannschiffer/pgsafe-mcp) |
-| **OmniBridge MCP** | Multi-channel notification and webhook bus with a persistent SQLite WAL queue | [GitHub](https://github.com/johannschiffer/omnibridge-mcp) |
-| **SysFlow MCP** | Safe Linux administration plane: systemd, port audit, isolated execution | [GitHub](https://github.com/johannschiffer/sysflow-mcp) |
-| **FastMCP Forge** | Production MCP server scaffolder: stdio, SSE and auth middleware | [GitHub](https://github.com/johannschiffer/fastmcp-forge) |
-
-[Live config builder](https://johannschiffer.github.io) | [GitHub Profile](https://github.com/johannschiffer) | [Support on Ko-fi ☕](https://ko-fi.com/johannschiffer)
-
-## Recommended Infrastructure & Sponsorship
-
-- **Sponsorship & Corporate Support**: Support continued maintenance and priority feature requests via [GitHub Sponsors](https://github.com/sponsors/johannschiffer).
-- **Verified Cloud & Network Infrastructure**:
-  - **High-Performance VPS & Nodes**: [Hetzner Cloud](https://www.hetzner.com/cloud) & [DigitalOcean](https://m.do.co/c/johannschiffer)
-  - **Reliable Proxy Pool & IP Rotation**: [Webshare](https://www.webshare.io/) & [Bright Data](https://brightdata.com/)
-  - **Documentation & Setup Guides**: [johannschiffer.github.io](https://johannschiffer.github.io/)
-
----
+| **CrawlEngine MCP** | Anti-bot web scraping, clean Markdown, proxy rotation, and TLS evasion | [GitHub](https://github.com/johannschiffer/crawlengine-mcp) |
+| **BrowserBridge MCP** | Deterministic headless browser automation with cryptographic action receipts | [GitHub](https://github.com/johannschiffer/browserbridge-mcp) |
+| **PgSafe MCP** | Zero-trust PostgreSQL/SQLite guard, live PII masking, and schema inspection | [GitHub](https://github.com/johannschiffer/pgsafe-mcp) |
+| **OmniBridge MCP** | Multi-channel notification bus with persistent SQLite queue | [GitHub](https://github.com/johannschiffer/omnibridge-mcp) |
+| **SysFlow MCP** | Safe Linux administration, systemd automation, and port auditing | [GitHub](https://github.com/johannschiffer/sysflow-mcp) |
+| **FastMCP Forge** | Production FastMCP server scaffolder with stdio and SSE middleware | [GitHub](https://github.com/johannschiffer/fastmcp-forge) |
 
 ## Support
 
-[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/johannschiffer)
+If you find this project helpful, you can support its ongoing maintenance on [Ko-fi](https://ko-fi.com/johannschiffer).
 
-If you find this tool helpful, you can support its maintenance via Ko-fi.
+## License
+
+MIT © 2026 [Johann Schiffer](https://github.com/johannschiffer)

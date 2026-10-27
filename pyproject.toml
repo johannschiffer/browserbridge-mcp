@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "browserbridge-mcp"
-version = "2.0.0"
+version = "1.0.0"
 description = "Headless browser automation, durable action receipts, and session pooling MCP server for AI agents"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -28,8 +28,8 @@ browserbridge = "browserbridge.cli:main"
 include = ["browserbridge*"]
 
 [project.urls]
-Homepage = "https://johannschiffer.github.io"
-Documentation = "https://johannschiffer.github.io"
+Homepage = "https://github.com/johannschiffer/browserbridge-mcp"
+Documentation = "https://github.com/johannschiffer/browserbridge-mcp#readme"
 Repository = "https://github.com/johannschiffer/browserbridge-mcp"
 Issues = "https://github.com/johannschiffer/browserbridge-mcp/issues"
 Funding = "https://ko-fi.com/johannschiffer"

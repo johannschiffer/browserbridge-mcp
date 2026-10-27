@@ -1,4 +1,4 @@
-# Genesis stack: all six Pro servers.
+# Genesis stack: all six MCP servers.
 # The MCP servers speak stdio, so clients normally launch them directly (see mcp-configs/).
 # This file builds and smoke-tests every image, keeps them running for attach/exec use, and exposes the SSE example.
 #   docker compose -f docker-compose.genesis-stack.yml up -d --build
@@ -15,22 +15,20 @@ x-common: &common
 services:
   crawlengine:
     <<: *common
-    build: ./servers/crawlengine-mcp-pro
+    build: ./servers/crawlengine-mcp
     container_name: genesis-crawlengine
     environment:
-      CRAWLENGINE_EDITION: pro
       CRAWLENGINE_PROXIES: ${CRAWLENGINE_PROXIES:-}
   pgsafe:
     <<: *common
-    build: ./servers/pgsafe-mcp-pro
+    build: ./servers/pgsafe-mcp
     container_name: genesis-pgsafe
     environment:
       DATABASE_URL: ${DATABASE_URL:-sqlite:///data/genesis.db}
-      PGSAFE_EDITION: pro
     volumes: [pgsafe_data:/app/data]
   omnibridge:
     <<: *common
-    build: ./servers/omnibridge-mcp-pro
+    build: ./servers/omnibridge-mcp
     container_name: genesis-omnibridge
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
@@ -45,19 +43,19 @@ services:
     volumes: [omnibridge_data:/root/.omnibridge]
   browserbridge:
     <<: *common
-    build: ./servers/browserbridge-mcp-pro
+    build: ./servers/browserbridge-mcp
     container_name: genesis-browserbridge
     environment: {PYTHONUNBUFFERED: "1"}
     volumes: [browserbridge_data:/data]
   sysflow:
     <<: *common
-    build: ./servers/sysflow-mcp-pro
+    build: ./servers/sysflow-mcp
     container_name: genesis-sysflow
     pid: host
     volumes: ["/var/log:/var/log:ro", "/proc:/host-proc:ro"]
   fastmcp-forge:
     <<: *common
-    build: ./servers/fastmcp-forge-pro
+    build: ./servers/fastmcp-forge
     container_name: genesis-fastmcp-forge
     ports: ["127.0.0.1:8000:8000"]
     environment:
