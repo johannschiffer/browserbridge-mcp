@@ -6,6 +6,12 @@
 
 > **100% Free & Open Source (MIT)**: All features, proxy rotation, migration simulation, Docker stacks, and recipes are completely unlocked. Support open development on [Ko-fi](https://ko-fi.com/johannschiffer).
 
+> ### ⚡ Open Source Ecosystem & Community Tools
+> | Resource | Access | Description |
+> |---|---|---|
+> | **Ruleset Bundle** | **100% Free** | 55+ production rulesets & MCP config templates. [Download Free](https://johannschiffer.github.io/) |
+> | **Support & Donate** | **Ko-fi** | Support open-source maintenance. [Support on Ko-fi](https://ko-fi.com/johannschiffer) |
+
 <a href="https://glama.ai/mcp/servers/@johannschiffer/browserbridge-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@johannschiffer/browserbridge-mcp/badge" alt="browserbridge-mcp MCP server" />
 </a>
@@ -15,11 +21,6 @@
 [![Protocol: MCP](https://img.shields.io/badge/MCP-2024--11--05-green.svg)](https://modelcontextprotocol.io/)
 [![Python: >=3.10](https://img.shields.io/badge/Python->=3.10-yellow.svg)](https://python.org/)
 
-> ### ⚡ Enterprise Infrastructure & Tooling
-> | Package | Access | Features |
-> |---|---|---|
-> | **Starter Kit** | **Free ($0+)** | 25+ `.cursorrules`, `CLAUDE.md` stack rules & MCP config templates. [Download Free](https://github.com/johannschiffer) |
-> | **Config Generator** | **Free Web Tool** | Interactive visual config generator for Claude Desktop & Cursor. [Open Generator](https://johannschiffer.github.io/) |
 
 **BrowserBridge MCP** is a lightweight headless browser session bridge and Accessibility Object Model (AOM) inspector designed for AI coding assistants (Claude Desktop, Cursor, OpenAI Codex, LangGraph).
 
@@ -126,16 +127,6 @@ The **BrowserBridge Pro Edition** adds:
 - 🧪 **100% Passing Pytest Suite.**
 
 ---
-
-## Solución Enterprise (Genesis Suite)
-
-Para despliegues en producción y cargas intensivas con bypass de rate limits, soporte multi-tenant y configuraciones Docker precompiladas:
-
-- **Bypass de Rate Limits & IP Rotation:** Automatización headless multi-tenant con receipts criptográficos y aislamiento en Docker precompilado.
-- **Soporte Multi-Tenant & RBAC:** Control de accesos granular, gestión de secretos y auditoría criptográfica.
-- **Docker Compose Stacks:** Contenedores precompilados y configuraciones listas para producción con orquestación autónoma.
-
-  
 
 ## 📄 License
 
