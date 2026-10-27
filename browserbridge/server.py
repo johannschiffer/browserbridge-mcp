@@ -1,4 +1,3 @@
-from ._genesis import NOTICE, print_upgrade_notice
 """
 BrowserBridge Pro MCP Server
 Exposes headless browser orchestration, durable action receipts,

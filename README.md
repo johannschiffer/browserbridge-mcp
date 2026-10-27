@@ -61,11 +61,14 @@ When autonomous AI agents interact with web pages:
 
 ## ✨ Features (Open Source v2.0)
 
-- 🌐 **Headless Navigation:** Fetch and navigate web pages with automatic redirect handling.
-- 🌳 **Accessibility Tree (AOM) Extraction:** Filters noisy DOMs into structured interactive nodes (buttons, links, textboxes) with stable `@node` identifiers.
-- 🧹 **Clean Text Extractor:** Strips scripts, ads, and formatting for fast summarization.
-- ⚡ **Zero Browser Overhead:** Pure Python runtime compatible with Claude Desktop and Cursor.
-
+- 🌐 **Headless Navigation**: Fetch and navigate web pages with automatic redirect handling.
+- 🌳 **Accessibility Tree (AOM) Extraction**: Filters noisy DOMs into structured interactive nodes (buttons, links, textboxes) with stable `@node` identifiers.
+- 🧹 **Clean Text Extractor**: Strips scripts, ads, and formatting for fast summarization.
+- 📜 **Durable Action Receipts Engine**: Generates cryptographic SHA-256 receipts for every web action, linking pre/post DOM hashes with visual state snapshots.
+- 🛡️ **Session Pool Manager with Anti-Zombie Auto-Cleanup**: Manages multiple browser contexts with strict inactivity TTLs, preventing memory leaks on your host.
+- 🎯 **Visual Element Selector & Coordinate Resolver**: Resolves robust CSS/XPath selectors and handles dynamic single-page applications (SPAs).
+- 🐳 **Production Docker & Compose**: Containerized headless Chromium runtime ready for cloud execution.
+- 🧪 **100% Passing Pytest Suite**.
 ---
 
 ## 🚀 Quickstart
@@ -115,19 +118,6 @@ browserbridge aom https://news.ycombinator.com
 
 ---
 
-## 🚀 Upgrade to BrowserBridge Pro
-
-Need enterprise-grade auditability, durable execution receipts, and browser pool sandboxing?
-
-The **BrowserBridge Pro Edition** adds:
-- 📜 **Durable Action Receipts Engine:** Generates cryptographic SHA-256 receipts for every web action, linking pre/post DOM hashes with visual state snapshots.
-- 🛡️ **Session Pool Manager con Anti-Zombie Auto-Cleanup:** Manages multiple browser contexts with strict inactivity TTLs, preventing memory leaks on your host.
-- 🎯 **Visual Element Selector & Coordinate Resolver:** Resolves robust CSS/XPath selectors and handles dynamic single-page applications (SPAs).
-- 🐳 **Production Docker & Compose:** Containerized headless Chromium runtime ready for cloud execution.
-- 🧪 **100% Passing Pytest Suite.**
-
----
-
 ## 📄 License
 
 MIT © 2026 [Johann Schiffer](https://github.com/johannschiffer)
@@ -160,3 +150,11 @@ Proxies that work well with BrowserBridge MCP. Some links are referral links.
   - **High-Performance VPS & Nodes**: [Hetzner Cloud](https://www.hetzner.com/cloud) & [DigitalOcean](https://m.do.co/c/johannschiffer)
   - **Reliable Proxy Pool & IP Rotation**: [Webshare](https://www.webshare.io/) & [Bright Data](https://brightdata.com/)
   - **Documentation & Setup Guides**: [johannschiffer.github.io](https://johannschiffer.github.io/)
+
+---
+
+## Support
+
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/johannschiffer)
+
+If you find this tool helpful, you can support its maintenance via Ko-fi.

@@ -1,4 +1,3 @@
-from ._genesis import NOTICE
 """
 BrowserBridge Pro CLI Entrypoint
 """

@@ -28,8 +28,8 @@ browserbridge = "browserbridge.cli:main"
 include = ["browserbridge*"]
 
 [project.urls]
-"Support / Donate" = "https://ko-fi.com/johannschiffer"
-"Documentation" = "https://johannschiffer.github.io"
-Funding = "https://github.com/sponsors/johannschiffer"
 Homepage = "https://johannschiffer.github.io"
+Documentation = "https://johannschiffer.github.io"
 Repository = "https://github.com/johannschiffer/browserbridge-mcp"
+Issues = "https://github.com/johannschiffer/browserbridge-mcp/issues"
+Funding = "https://ko-fi.com/johannschiffer"
