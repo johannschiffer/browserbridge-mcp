@@ -1,17 +1,42 @@
-import asyncio
-from browserbridge.engine import BrowserSession
-from browserbridge.core.receipts_engine import DurableReceiptsEngine
+"""
+BrowserBridge MCP workflow recipe.
+Demonstrates session DOM interaction, AOM extraction, and SHA-256 receipt chain verification.
+"""
+import json
+import tempfile
+from pathlib import Path
 
-async def main():
-    receipts = DurableReceiptsEngine()
-    session = BrowserSession(headless=True)
-    await session.start()
-    try:
-        await session.navigate("https://example.com")
-        receipt = receipts.record_action(action="navigate", target="https://example.com", status="success")
-        print("Recorded durable action receipt:", receipt.receipt_id)
-    finally:
-        await session.close()
+from browserbridge.server import BrowserBridgeServer
+
+
+def main() -> None:
+    with tempfile.TemporaryDirectory() as tmp:
+        db_file = Path(tmp) / "receipts.db"
+        server = BrowserBridgeServer(db_path=str(db_file))
+        sess = server.pool.get_or_create("demo")
+        sess.html = (
+            "<html><head><title>Portal</title></head>"
+            "<body><form><input name='email' /><button id='login'>Sign In</button></form></body></html>"
+        )
+
+        aom = server.call_tool("extract_accessibility_tree", {"session_id": "demo"})
+        server.call_tool(
+            "fill_form_field",
+            {"selector": "input[name='email']", "value": "agent@example.com", "session_id": "demo"},
+        )
+        server.call_tool("click_element", {"selector": "#login", "session_id": "demo"})
+        trail = server.call_tool("verify_action_trail", {"session_id": "demo"})
+
+        print(
+            json.dumps(
+                {
+                    "aom_nodes": len(aom),
+                    "trail": trail,
+                },
+                indent=2,
+            )
+        )
+
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

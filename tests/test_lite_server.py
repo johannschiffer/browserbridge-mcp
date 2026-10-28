@@ -1,9 +1,8 @@
-import pytest
-import json
 from browserbridge.server import BrowserBridgeServer
 
-def test_lite_server():
-    server = BrowserBridgeServer()
+
+def test_lite_server(tmp_path):
+    server = BrowserBridgeServer(db_path=str(tmp_path / "lite_receipts.db"))
     assert server.name == "browserbridge-mcp"
     assert len(server.tools) >= 6
 

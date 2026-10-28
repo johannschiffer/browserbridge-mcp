@@ -1,18 +1,18 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=77.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "browserbridge-mcp"
-version = "1.0.0"
-description = "Headless browser automation, durable action receipts, and session pooling MCP server for AI agents"
+version = "2.0.1"
+description = "Lightweight HTTP/DOM session bridge, Accessibility Object Model extractor, and SHA-256 action receipt MCP server"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "Johann Schiffer"}
 ]
-keywords = ["mcp", "model-context-protocol", "browser", "headless", "automation", "claude", "cursor", "playwright"]
+keywords = ["mcp", "model-context-protocol", "browser", "aom", "automation", "claude", "cursor", "audit-trail"]
 dependencies = [
     "httpx>=0.25.0"
 ]
@@ -26,6 +26,9 @@ browserbridge = "browserbridge.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["browserbridge*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
 
 [project.urls]
 Homepage = "https://github.com/johannschiffer/browserbridge-mcp"

@@ -2,6 +2,7 @@ import pytest
 import tempfile
 import os
 import json
+from unittest.mock import MagicMock, patch
 from browserbridge.server import BrowserBridgeServer
 
 @pytest.fixture
@@ -50,7 +51,14 @@ def test_jsonrpc_tools_list(temp_server):
     assert "verify_action_trail" in tool_names
     assert "get_pool_status" in tool_names
 
-def test_jsonrpc_navigate_and_receipt(temp_server):
+@patch("httpx.Client.get")
+def test_jsonrpc_navigate_and_receipt(mock_get, temp_server):
+    mock_resp = MagicMock()
+    mock_resp.url = "https://example.com/status"
+    mock_resp.status_code = 200
+    mock_resp.text = "<html><head><title>Status OK</title></head><body>OK</body></html>"
+    mock_get.return_value = mock_resp
+
     req = {
         "jsonrpc": "2.0",
         "id": 3,
@@ -58,7 +66,7 @@ def test_jsonrpc_navigate_and_receipt(temp_server):
         "params": {
             "name": "navigate_page",
             "arguments": {
-                "url": "https://httpbin.org/status/200",
+                "url": "https://example.com/status",
                 "session_id": "test_call_sess"
             }
         }

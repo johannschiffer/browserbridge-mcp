@@ -1,9 +1,8 @@
 """
-browserbridge-mcp (v1.0.0)
-Headless browser automation, durable action receipts, and session pooling MCP server for AI agents
-
+browserbridge-mcp (v2.0.1)
+Lightweight HTTP/DOM session bridge, Accessibility Object Model extractor, and SHA-256 action receipt MCP server.
 """
 
-__version__ = "1.0.0"
+__version__ = "2.0.1"
 __author__ = "Johann Schiffer"
 __license__ = "MIT"
