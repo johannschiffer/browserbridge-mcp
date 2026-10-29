@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-brightgreen.svg)](https://python.org)
 [![MCP Compliant](https://img.shields.io/badge/MCP-2024--11--05-purple.svg)](https://modelcontextprotocol.io)
+[![M8ven Score](https://m8ven.ai/badge/mcp/johannschiffer-browserbridge-mcp-1irvww?v=68bac05bace4b136ae00c003d3b1daeb)](https://m8ven.ai/mcp/johannschiffer-browserbridge-mcp-1irvww?s=readme)
 
 <a href="https://glama.ai/mcp/servers/@johannschiffer/browserbridge-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@johannschiffer/browserbridge-mcp/badge" alt="browserbridge-mcp MCP server" />
