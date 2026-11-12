@@ -14,6 +14,7 @@ from typing import Any, Dict, List
 import httpx
 
 from . import __version__
+from .core.safe_transport import guarded_transport
 from .core.url_guard import validate_navigation_url
 
 logger = logging.getLogger("BrowserBridgeEngine")
@@ -45,6 +46,7 @@ class BrowserSession:
         try:
             with httpx.Client(
                 timeout=15.0,
+                transport=guarded_transport(),
                 follow_redirects=True,
                 max_redirects=5,
                 event_hooks={"request": [_check_redirect_ssrf]},

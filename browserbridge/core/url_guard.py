@@ -22,7 +22,8 @@ _NUMERIC_HOST_RE = re.compile(r"^(0x[0-9a-f]+|\d+(\.\d+){0,3})$", re.IGNORECASE)
 
 def _is_forbidden_ip(ip_obj: ipaddress._BaseAddress) -> bool:
     return (
-        ip_obj.is_private
+        not ip_obj.is_global
+        or ip_obj.is_private
         or ip_obj.is_loopback
         or ip_obj.is_link_local
         or ip_obj.is_multicast
@@ -47,6 +48,11 @@ def validate_navigation_url(url: str) -> str:
     host = (parsed.hostname or "").strip().lower().rstrip(".")
     if not host:
         raise ValueError("Invalid URL: missing hostname.")
+
+    try:
+        _ = parsed.port
+    except ValueError as exc:
+        raise ValueError("Invalid URL: malformed port.") from exc
 
     if os.getenv("BROWSERBRIDGE_ALLOW_PRIVATE_URLS", "").strip() in ("1", "true", "yes"):
         return raw

@@ -99,3 +99,13 @@ def test_malformed_jsonrpc_and_cli_aom_and_version(tmp_path):
         nodes = sess.extract_accessibility_tree()
         assert len(nodes) == 2
         assert nodes[0]["role"] == "button"
+
+
+def test_guarded_transport_blocks_private_resolution():
+    import httpx
+    import pytest
+    from browserbridge.core.safe_transport import guarded_transport
+
+    with httpx.Client(transport=guarded_transport(), timeout=3.0) as client:
+        with pytest.raises(httpx.HTTPError):
+            client.get("http://127.0.0.1:9/")

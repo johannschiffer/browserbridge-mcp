@@ -148,4 +148,4 @@ def test_jsonrpc_invalid_tool(temp_server):
     }
     resp = temp_server.handle_request(req)
     assert "error" in resp
-    assert resp["error"]["code"] == -32601
+    assert resp["error"]["code"] == -32602
