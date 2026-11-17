@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "browserbridge-mcp"
-version = "2.0.1"
+version = "2.1.0"
 description = "Lightweight HTTP/DOM session bridge, Accessibility Object Model extractor, and SHA-256 action receipt MCP server"
 readme = "README.md"
 requires-python = ">=3.10"

@@ -7,9 +7,11 @@ session pool management, and Accessibility Object Model (AOM) extraction over st
 import json
 import logging
 import sys
+import time
 from typing import Any, Callable, Dict, List, Optional
 
 from . import __version__
+from ._genesis import record_blackbox_event
 from .core.receipts_engine import DurableReceiptsEngine
 from .core.selector_resolver import SelectorResolver
 from .core.session_pool import SessionPoolManager
@@ -210,7 +212,44 @@ class BrowserBridgeServer:
         if not name or name not in self.tools:
             raise KeyError(f"Tool not found: '{name}'")
         func = self.tools[name]["func"]
-        return func(**arguments)
+        start_t = time.perf_counter()
+        try:
+            result = func(**arguments)
+        except Exception as exc:
+            duration_ms = round((time.perf_counter() - start_t) * 1000.0, 3)
+            record_blackbox_event(
+                "HTTP_CLIENT" if name == "navigate_page" else "MCP_TOOL",
+                {"tool": name, "error": str(exc)},
+                source=self.name,
+                duration_ms=duration_ms,
+                status="error",
+            )
+            raise
+        duration_ms = round((time.perf_counter() - start_t) * 1000.0, 3)
+        if name == "navigate_page":
+            status = "ok" if isinstance(result, dict) and result.get("status") != "error" else "error"
+            record_blackbox_event(
+                "HTTP_CLIENT",
+                {
+                    "tool": name,
+                    "method": "GET",
+                    "url": arguments.get("url", ""),
+                    "status_code": result.get("status_code") if isinstance(result, dict) else None,
+                    "receipt_id": (result.get("action_receipt") or {}).get("receipt_id") if isinstance(result, dict) else None,
+                },
+                source=self.name,
+                duration_ms=duration_ms,
+                status=status,
+            )
+        else:
+            record_blackbox_event(
+                "MCP_TOOL",
+                {"tool": name, "session_id": arguments.get("session_id", "default")},
+                source=self.name,
+                duration_ms=duration_ms,
+                status="ok",
+            )
+        return result
 
     def handle_request(self, request: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         if not isinstance(request, dict):
